@@ -1,0 +1,53 @@
+/**
+ * Copyright (c) 2013, PROS Inc. All right reserved.
+ *
+ * Released under BSD-3 style license.
+ * See http://opensource.org/licenses/BSD-3-Clause
+ */
+
+apply plugin: 'groovy'
+apply plugin: 'maven'
+// Use the ZAP plugin.
+apply plugin: 'zap'
+
+// Properties that are available, the zapInstallDir and applicationUrl properties are mandatory.
+zapConfig {
+    // Required Properties.
+    // The directory location containing the ZAP install.
+    zapInstallDir = "/Users/phoellig/Downloads/ZAP_2.2.2"
+    // The URL of the application which ZAP should run active scanning against and generate issue reports for.
+    // This should be the URL of the application that you are testing.
+    applicationUrl = "http://localhost:8080"
+
+    // Optional Properties.
+    // The port on which ZAP should run. Defaults to 54300.
+    proxyPort = "9999"
+    // The format of the output report. Acceptable formats are JSON, HTML, and XML.
+    reportFormat = "JSON"
+    // The path of the report file to write from the zapReport task. This path must be writable, subdirs will NOT be created.
+    reportOutputPath = "report"
+    // The timeout for the active scanner process. How long should we keep polling for scan completion in minutes. Defaults to 30.
+    activeScanTimeout = "30"
+}
+
+buildscript {
+    repositories {
+        // Path to the maven repository that contains the plguin jar.
+        mavenRepo(url: "../repo")
+    }
+    dependencies {
+        classpath 'com.pros.gradle:zap-gradle-plugin:1.0-SNAPSHOT'
+    }
+}
+
+uploadArchives {
+    repositories {
+        mavenDeployer {
+            repository(url: uri('../repo'))
+        }
+    }
+}
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '1.6'
+}
