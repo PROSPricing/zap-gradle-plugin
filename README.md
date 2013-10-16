@@ -23,7 +23,8 @@ zapConfig {
     // The directory location containing the ZAP install.
     zapInstallDir = "/path/to/ZAP/install/directory"
     // The URL of the application which ZAP should run active scanning against and generate issue reports for.
-    // This should be the URL of the application that you are testing.
+    // This should be the URL of the application that you are testing. This is used to generate the report as well
+    // as to trigger the active scanning.
     applicationUrl = "http://attackme.example.com:8080"
 }
 
