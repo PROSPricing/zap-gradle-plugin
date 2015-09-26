@@ -12,7 +12,7 @@ Retrieve the produced jar file from ../repo/com/pros/gradle.
 
 ## Integrating the Plugin With Your Build
 
-Download ZAP from http://code.google.com/p/zaproxy/downloads/list and install it on your system. The plugin does not currently bundle ZAP, but has been tested with versions 2.2.2 and 2.2.1.
+Download ZAP from https://github.com/zaproxy/zaproxy/wiki/Downloads and install it on your system. The plugin does not currently bundle ZAP, but has been tested with versions 2.2.2 and 2.2.1.
 
 Update your project's build.gradle file to contain the following:
 
