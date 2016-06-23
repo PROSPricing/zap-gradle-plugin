@@ -74,7 +74,7 @@ class ZapStart extends DefaultTask {
             ProcessBuilder builder = null
             if (Os.isFamily(Os.FAMILY_WINDOWS))
             {
-                builder = new ProcessBuilder("cmd", "/c", "java -jar zap.jar -daemon -port ${project.zapConfig.proxyPort.toInteger()}")
+                builder = new ProcessBuilder("java","-jar", "zap.jar", "-daemon", "-port", "${project.zapConfig.proxyPort.toInteger()}")
             }
             else
             {
